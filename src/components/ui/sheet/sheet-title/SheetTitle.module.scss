@@ -1,0 +1,4 @@
+.title {
+	@include text-lg(600);
+	color: rgb(var(--foreground));
+}

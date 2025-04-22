@@ -1,0 +1,9 @@
+.table {
+	position: relative;
+	width: 100%;
+	overflow: auto;
+	&__block {
+		width: 100%;
+		@include text-sm;
+	}
+}

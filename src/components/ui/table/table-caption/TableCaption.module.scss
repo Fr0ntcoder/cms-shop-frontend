@@ -1,0 +1,5 @@
+.caption {
+	@include text-sm();
+	margin-top: 16px;
+	color: rgb(var(--muted-foreground));
+}

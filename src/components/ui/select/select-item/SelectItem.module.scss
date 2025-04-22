@@ -1,0 +1,35 @@
+.item {
+	display: flex;
+	position: relative;
+	width: 100%;
+	align-items: center;
+	@include text-sm;
+	padding: 6px 8px 6px 32px;
+	user-select: none;
+	border-radius: var(--rounded-sm);
+
+	&:focus {
+		background: rgb(var(--accent));
+		color: rgb(var(--accent-foreground));
+	}
+
+	&data-[disabled] {
+		pointer-events: none;
+		opacity: 0.5;
+	}
+
+	&__indicator {
+		display: flex;
+		position: absolute;
+		width: 14px;
+		height: 14px;
+		left: 8px;
+		justify-content: center;
+		align-items: center;
+
+		& > svg {
+			width: 16px;
+			height: 16px;
+		}
+	}
+}

@@ -1,0 +1,7 @@
+.card {
+	border-width: 1px;
+	border-radius: var(--rounded-lg);
+	background: rgb(var(--card));
+	color: rgb(var(--card-foreground));
+	box-shadow: var(--shadow-md);
+}

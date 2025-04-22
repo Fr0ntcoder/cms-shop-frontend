@@ -1,0 +1,11 @@
+.head {
+	font-weight: 500;
+	height: 48px;
+	text-align: left;
+	vertical-align: middle;
+	color: rgb(var(--muted-foreground));
+
+	&:has([role='checkbox']) {
+		padding-right: 0;
+	}
+}

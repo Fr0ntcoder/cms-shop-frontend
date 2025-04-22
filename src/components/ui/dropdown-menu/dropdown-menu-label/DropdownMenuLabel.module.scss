@@ -1,0 +1,8 @@
+.label {
+	@include text-sm(600);
+	padding: 6px 8px;
+
+	&_inset {
+		padding-left: 32px;
+	}
+}

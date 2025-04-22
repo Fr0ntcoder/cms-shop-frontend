@@ -1,0 +1,4 @@
+.description {
+	@include text-sm;
+	color: rgb(var(--muted-foreground));
+}
