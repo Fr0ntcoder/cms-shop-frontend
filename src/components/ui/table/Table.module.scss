@@ -1,9 +1,11 @@
 .table {
-	position: relative;
 	width: 100%;
-	overflow: auto;
-	&__block {
-		width: 100%;
-		@include text-sm;
+	border-collapse: collapse;
+
+	& th,
+	td {
+		text-align: left;
+		padding: 15px;
+		border: 1px solid rgb(var(--primary));
 	}
 }

@@ -1,18 +1,11 @@
 'use client'
 
-import { Slot } from '@radix-ui/react-slot'
 import cn from 'clsx'
 import { ButtonHTMLAttributes, forwardRef } from 'react'
 
 import styles from './Button.module.scss'
 
-type ButtonVariants =
-	| 'default'
-	| 'destructive'
-	| 'outline'
-	| 'secondary'
-	| 'ghost'
-	| 'link'
+type ButtonVariants = 'default' | 'outline' | 'ghost' | 'link'
 
 type ButtonSize = 'default' | 'sm' | 'lg' | 'icon'
 
@@ -39,9 +32,8 @@ export const Button = forwardRef<HTMLButtonElement, IButtonVariants>(
 		},
 		ref
 	) => {
-		const Comp = asChild ? Slot : 'button'
 		return (
-			<Comp
+			<button
 				disabled={disabled || loading}
 				className={cn(
 					styles.button,
@@ -51,7 +43,9 @@ export const Button = forwardRef<HTMLButtonElement, IButtonVariants>(
 				)}
 				ref={ref}
 				{...props}
-			></Comp>
+			>
+				{children}
+			</button>
 		)
 	}
 )

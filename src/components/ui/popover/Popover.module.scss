@@ -1,36 +1,99 @@
-.content {
-	width: 288px;
-	padding: 16px;
-	border-width: 1px;
-	border-radius: var(--rounded-md);
-	background: rgb(var(--popover));
-	box-shadow: var(--shadow-md);
-	color: rgb(var(--popover-foreground));
-	z-index: 50;
+.popover {
+	position: relative;
 
-	&data-[state='open'] {
-		@include animate-in;
-		@include zoom-in;
+	&__trigger {
+		padding: 8px 12px;
+		background: #fff;
 	}
 
-	&data-[state='closed'] {
-		@include animate-out;
-		@include zoom-out;
-	}
+	&__content {
+		position: absolute;
+		min-width: 200px;
+		background: rgb(var(--primary));
+		color: #fff;
+		z-index: 10;
 
-	&data-[side='bottom'] {
-		@include slide-in-from-top(-8px);
-	}
+		&_top {
+			display: flex;
+			height: 50px;
+			bottom: calc(100% + 10px);
+			left: calc(50% - 100px);
+			justify-content: center;
+			align-items: center;
+			&::after {
+				content: '';
+				position: absolute;
+				bottom: -8px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 0;
+				height: 0;
+				border-left: 6px solid transparent;
+				border-right: 6px solid transparent;
+				border-top: 8px solid rgb(var(--primary));
+			}
+		}
 
-	&data-[side='left'] {
-		@include slide-in-from-right(8px);
-	}
+		&_bottom {
+			display: flex;
+			top: calc(100% + 10px);
+			left: calc(50% - 100px);
+			justify-content: center;
+			align-items: center;
+			&::after {
+				content: '';
+				position: absolute;
+				top: -8px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 0;
+				height: 0;
+				border-left: 6px solid transparent;
+				border-right: 6px solid transparent;
+				border-bottom: 8px solid rgb(var(--primary));
+			}
+		}
 
-	&data-[side='right'] {
-		@include slide-in-from-left(-8px);
-	}
+		&_left {
+			display: flex;
+			top: calc(50% - 25px);
+			right: calc(100% + 10px);
+			height: 50px;
+			justify-content: center;
+			align-items: center;
+			&::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				right: -8px;
+				transform: translateY(-50%);
+				width: 0;
+				height: 0;
+				border-top: 6px solid transparent;
+				border-bottom: 6px solid transparent;
+				border-left: 8px solid rgb(var(--primary));
+			}
+		}
 
-	&data-[side='top'] {
-		@include slide-in-from-bottom(8px);
+		&_right {
+			display: flex;
+			top: calc(50% - 25px);
+			left: calc(100% + 10px);
+			height: 50px;
+			justify-content: center;
+			align-items: center;
+			&::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: -8px;
+				transform: translateY(-50%);
+				width: 0;
+				height: 0;
+				border-top: 6px solid transparent;
+				border-bottom: 6px solid transparent;
+				border-right: 8px solid rgb(var(--primary));
+			}
+		}
 	}
 }

@@ -1,8 +1,0 @@
-.cell {
-	padding: 16px;
-	vertical-align: middle;
-
-	&:has([role='checkbox']) {
-		padding-right: 0;
-	}
-}

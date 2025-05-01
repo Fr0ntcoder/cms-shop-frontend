@@ -1,26 +1,76 @@
-import * as PopoverPrimitive from '@radix-ui/react-popover'
+'use client'
+
 import cn from 'clsx'
-import { ComponentPropsWithoutRef, ComponentRef, forwardRef } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
+import { ReactNode, Ref, useEffect, useRef, useState } from 'react'
+
+import { popoverAnimate } from '@/shared/animation/popover'
 
 import styles from './Popover.module.scss'
 
-const Popover = PopoverPrimitive.Root
+type Position = 'top' | 'bottom' | 'left' | 'right'
+interface Props {
+	buttonLabel: string
+	children: ReactNode
+	position?: Position
+}
 
-const PopoverTrigger = PopoverPrimitive.Trigger
+export function Popover({ buttonLabel, children, position = 'top' }: Props) {
+	const [isOpen, setIsOpen] = useState(false)
+	const buttonRef = useRef<HTMLButtonElement | null>(null)
+	const contentRef = useRef<HTMLButtonElement | null>(null)
 
-const PopoverContent = forwardRef<
-	ComponentRef<typeof PopoverPrimitive.Content>,
-	ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
->(({ className, align = 'center', sideOffset = 4, ...props }, ref) => (
-	<PopoverPrimitive.Portal>
-		<PopoverPrimitive.Content
-			ref={ref}
-			align={align}
-			sideOffset={sideOffset}
-			className={cn(styles.content, className)}
-			{...props}
-		/>
-	</PopoverPrimitive.Portal>
-))
+	const togglePopover = () => setIsOpen(prev => !prev)
 
-export { Popover, PopoverContent, PopoverTrigger }
+	const handleClickOutside = (e: MouseEvent) => {
+		if (
+			contentRef.current &&
+			!contentRef.current.contains(e.target as Node) &&
+			buttonRef.current &&
+			!buttonRef.current.contains(e.target as Node)
+		) {
+			setIsOpen(false)
+		}
+	}
+
+	useEffect(() => {
+		if (isOpen) {
+			document.addEventListener('mousedown', handleClickOutside)
+		} else {
+			document.removeEventListener('mousedown', handleClickOutside)
+		}
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside)
+		}
+	}, [isOpen])
+
+	return (
+		<div className={styles.popover}>
+			<button
+				ref={buttonRef}
+				onClick={togglePopover}
+				className={styles.popover__trigger}
+			>
+				{buttonLabel}
+			</button>
+			<AnimatePresence>
+				{isOpen && (
+					<motion.div
+						{...popoverAnimate}
+						ref={contentRef as Ref<HTMLDivElement>}
+						className={cn(
+							styles.popover__content,
+							position === 'left' && styles.popover__content_left,
+							position === 'right' && styles.popover__content_right,
+							position === 'top' && styles.popover__content_top,
+							position === 'bottom' && styles.popover__content_bottom
+						)}
+					>
+						{children}
+					</motion.div>
+				)}
+			</AnimatePresence>
+		</div>
+	)
+}
