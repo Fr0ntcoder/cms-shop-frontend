@@ -45,3 +45,13 @@ export interface IOrder {
 	user: IUser
 	total: number
 }
+
+export type OrderTypeData = {
+	status?: EnumOrderStatus
+	items: {
+		quantity: number
+		price: number
+		productId: string
+		storeId: string
+	}[]
+}
