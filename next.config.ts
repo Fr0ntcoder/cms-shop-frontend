@@ -4,7 +4,8 @@ const path = require('path')
 const nextConfig: NextConfig = {
 	sassOptions: {
 		includePaths: [path.join(__dirname, 'styles')],
-		prependData: `@import "~@/styles/mixins.scss";`
+		prependData: `
+		@import "~@/styles/mixins.scss";`
 	},
 	env: {
 		APP_ENV: process.env.APP_ENV,

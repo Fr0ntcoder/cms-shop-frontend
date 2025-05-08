@@ -1,3 +1,5 @@
+'use client'
+
 import cn from 'clsx'
 import { ChevronDown } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
@@ -33,8 +35,8 @@ export function Select({ options, onSelect, className }: Props) {
 	const selectList = options.map(item => (
 		<div
 			className={cn(
-				styles.select__item,
-				item.value === selected?.value && styles.select__item_active
+				styles.item,
+				item.value === selected?.value && styles[`item--active`]
 			)}
 			key={item.value}
 			onClick={() => handleSelect(item)}
@@ -44,20 +46,17 @@ export function Select({ options, onSelect, className }: Props) {
 	))
 
 	return (
-		<div className={cn(styles.select, className)} ref={ref}>
-			<div className={styles.select__text} onClick={toogleSelect}>
+		<div className={cn(styles.root, className)} ref={ref}>
+			<div className={styles.text} onClick={toogleSelect}>
 				{selected?.text || 'Выберите'}
 				<ChevronDown
 					size={15}
-					className={cn(
-						styles.select__arrow,
-						isOpen && styles.select__arrow_active
-					)}
+					className={cn(styles.arrow, isOpen && styles[`arrow--active`])}
 				/>
 			</div>
 			<AnimatePresence>
 				{isOpen && (
-					<motion.div {...selectAnimate} className={styles.select__list}>
+					<motion.div {...selectAnimate} className={styles.list}>
 						{selectList}
 					</motion.div>
 				)}

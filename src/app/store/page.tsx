@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { Store } from '@/components/screens/store'
+import { Store } from '@/components/features/store'
 
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 

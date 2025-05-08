@@ -1,9 +1,11 @@
+'use client'
+
 import { X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 
-import { useClickPortalOutside } from '@/hooks/useClickPortalOutside'
+import { useClickOutside } from '@/hooks/useClickOutside'
 
 import { modalAnimate, modalOverlayAnimate } from '@/shared/animation/modal'
 
@@ -17,30 +19,24 @@ interface Props {
 }
 
 export function Modal({ className, children, isOpen, onClose }: Props) {
-	const { ref, handleExitComplete, root } =
-		useClickPortalOutside<HTMLDivElement>(onClose, isOpen)
+	const ref = useClickOutside<HTMLDivElement>(onClose)
 
-	if (!root) return null
+	if (typeof window === 'undefined' || typeof document === 'undefined')
+		return null
 
 	return createPortal(
-		<AnimatePresence onExitComplete={handleExitComplete}>
+		<AnimatePresence>
 			{isOpen && (
-				<motion.div className={styles.modal} {...modalOverlayAnimate}>
-					<motion.div
-						className={styles.modal__wrap}
-						ref={ref}
-						{...modalAnimate}
-					>
-						<button className={styles.modal__close} onClick={onClose}>
+				<motion.div className={styles.root} {...modalOverlayAnimate}>
+					<motion.div className={styles.wrap} {...modalAnimate} ref={ref}>
+						<span className={styles.close} onClick={onClose}>
 							<X size={20} />
-						</button>
-						{children && (
-							<div className={styles.modal__content}>{children}</div>
-						)}
+						</span>
+						{children}
 					</motion.div>
 				</motion.div>
 			)}
 		</AnimatePresence>,
-		root
+		document.body
 	)
 }

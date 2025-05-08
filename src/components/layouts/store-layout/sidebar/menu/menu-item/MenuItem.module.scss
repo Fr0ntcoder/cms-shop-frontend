@@ -1,0 +1,20 @@
+.item {
+	display: block;
+}
+.link {
+	display: flex;
+	font-size: 20px;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 15px;
+	align-items: center;
+	color: rgb(var(--primary));
+
+	&_active {
+		background: rgb(var(--primary));
+		color: #fff;
+	}
+	& svg {
+		margin-right: 15px;
+	}
+}

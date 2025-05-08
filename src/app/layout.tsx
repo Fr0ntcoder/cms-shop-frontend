@@ -29,6 +29,7 @@ export default function RootLayout({
 		<html lang='ru'>
 			<body className={nunito.className}>
 				<Providers>{children}</Providers>
+				{/* <div id='portal-root'></div> */}
 			</body>
 		</html>
 	)

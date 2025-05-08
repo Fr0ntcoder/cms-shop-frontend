@@ -7,7 +7,7 @@ import styles from './Button.module.scss'
 
 type ButtonVariants = 'default' | 'outline' | 'ghost' | 'link'
 
-type ButtonSize = 'default' | 'sm' | 'lg' | 'icon'
+type ButtonSize = 'sm' | 'md' | 'lg' | 'icon'
 
 export interface IButtonVariants
 	extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -23,7 +23,7 @@ export const Button = forwardRef<HTMLButtonElement, IButtonVariants>(
 		{
 			className,
 			variant = 'default',
-			size = 'default',
+			size = 'sm',
 			asChild = false,
 			children,
 			disabled,
@@ -36,10 +36,10 @@ export const Button = forwardRef<HTMLButtonElement, IButtonVariants>(
 			<button
 				disabled={disabled || loading}
 				className={cn(
-					styles.button,
+					styles.root,
 					className,
-					styles[`button__variant_${variant}`],
-					styles[`button__size_${size}`]
+					styles[`variant--${variant}`],
+					styles[`size--${size}`]
 				)}
 				ref={ref}
 				{...props}

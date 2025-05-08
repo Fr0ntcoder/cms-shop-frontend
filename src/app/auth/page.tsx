@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
-import { Auth } from '@/components/screens/auth'
+import { Auth } from '@/components/features/auth'
 
 export const metadata: Metadata = { title: 'Авторизация' }
-export function AuthPage() {
+export default function AuthPage() {
 	return <Auth />
 }

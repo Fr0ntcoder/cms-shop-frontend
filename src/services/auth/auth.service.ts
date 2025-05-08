@@ -16,7 +16,6 @@ class AuthService {
 			method: 'POST',
 			data
 		})
-
 		if (response.data.accessToken) {
 			saveTokenStorage(response.data.accessToken)
 		}

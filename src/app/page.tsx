@@ -1,4 +1,4 @@
-import { Home } from '@/components/screens/home'
+import { Home } from '@/components/features/home'
 
 export default function HomeP() {
 	return <Home />

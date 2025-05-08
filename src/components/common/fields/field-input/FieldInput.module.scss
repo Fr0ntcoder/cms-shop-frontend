@@ -1,0 +1,24 @@
+.root {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	input {
+		width: 100%;
+	}
+}
+
+.label {
+	margin-bottom: 5px;
+
+	span {
+		color: var(--primary);
+	}
+}
+
+.relative {
+	display: flex;
+	justify-content: space-between;
+	border-radius: var(--radius-mid);
+	border: 1px solid var(--input);
+}

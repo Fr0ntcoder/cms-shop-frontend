@@ -1,77 +1,84 @@
-.button {
+.root {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	white-space: nowrap;
 	border-radius: var(--rounded-md);
 	transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-	@include text-sm(500);
 	color: #fff;
 	cursor: pointer;
 
-	&__variant {
-		&_default {
-			border: 1px solid rgb(var(--primary));
-			background: rgb(var(--primary));
-			color: rgb(var(--text-light));
+	& > svg {
+		margin-right: 10px;
+	}
+}
 
-			&:hover {
-				background: rgba(var(--primary), 0.7);
-			}
-		}
+.variant {
+	&--default {
+		border: 1px solid rgb(var(--primary));
+		background: rgb(var(--primary));
+		color: rgb(var(--text-light));
 
-		&_outline {
-			border: 1px solid rgb(var(--primary));
-			background: none;
-			color: rgb(var(--text-primary));
-
-			&:hover {
-				background: rgb(var(--primary));
-				color: rgb(var(--text-light));
-			}
-		}
-
-		&_ghost {
-			background: none;
-			border-color: transparent;
-			color: rgb(var(--primary));
-			&:hover {
-				background: rgb(var(--primary));
-				color: rgb(var(--text-light));
-			}
-		}
-
-		&_link {
-			border: none;
-			background: none;
-			color: rgb(var(--primary));
-			&:hover {
-				text-decoration: underline;
-			}
+		&:hover {
+			background: rgba(var(--primary), 0.7);
 		}
 	}
 
-	&__size {
-		&_default {
-			height: 40px;
-			padding: 0 16px;
-		}
+	&--outline {
+		border: 1px solid rgb(var(--primary));
+		background: none;
+		color: rgb(var(--text-primary));
 
-		&_sm {
-			height: 40px;
-			padding: 0 12px;
-			border-radius: var(--rounded-md);
+		&:hover {
+			background: rgb(var(--primary));
+			color: rgb(var(--text-light));
 		}
+	}
 
-		&_lg {
-			height: 40px;
-			padding: 0 32px;
-			border-radius: var(--rounded-md);
+	&--ghost {
+		background: none;
+		border-color: transparent;
+		color: rgb(var(--primary));
+		&:hover {
+			background: rgb(var(--primary));
+			color: rgb(var(--text-light));
 		}
+	}
 
-		&_icon {
-			width: 40px;
-			height: 40px;
+	&--link {
+		border: none;
+		background: none;
+		color: rgb(var(--primary));
+		&:hover {
+			text-decoration: underline;
 		}
+	}
+}
+
+.size {
+	&--sm {
+		font-size: 16px;
+		height: 40px;
+		padding: 0 12px;
+		border-radius: var(--rounded-md);
+	}
+
+	&--md {
+		font-size: 18px;
+		height: 40px;
+		padding: 0 12px;
+		border-radius: var(--rounded-md);
+	}
+
+	&--lg {
+		font-size: 20px;
+		height: 50px;
+		padding: 0 32px;
+		border-radius: var(--rounded-md);
+	}
+
+	&--icon {
+		width: 40px;
+		height: 40px;
 	}
 }

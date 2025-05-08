@@ -6,12 +6,12 @@ import { IUser } from '@/shared/types'
 
 class UserService {
 	async getProfile() {
-		const response = await axiosWithAuth<IUser>({
+		const { data } = await axiosWithAuth<IUser>({
 			url: ROUTES.USER.PROFILE,
 			method: 'GET'
 		})
 
-		return response
+		return data
 	}
 
 	async toogleFavorite(productId: string) {

@@ -1,72 +1,41 @@
-'use client'
-
 import cn from 'clsx'
 import { AnimatePresence, motion } from 'motion/react'
-import { ReactNode, Ref, useEffect, useRef, useState } from 'react'
+import { ReactNode } from 'react'
+
+import { Button } from '@/components/ui/button'
+
+import { useClickOutside } from '@/hooks/useClickOutside'
 
 import { popoverAnimate } from '@/shared/animation/popover'
 
 import styles from './Popover.module.scss'
 
-type Position = 'top' | 'bottom' | 'left' | 'right'
 interface Props {
-	buttonLabel: string
+	isOpen: boolean
+	onToogle: () => void
+	onClose: () => void
+	trigger: ReactNode
 	children: ReactNode
-	position?: Position
+	className?: string
 }
 
-export function Popover({ buttonLabel, children, position = 'top' }: Props) {
-	const [isOpen, setIsOpen] = useState(false)
-	const buttonRef = useRef<HTMLButtonElement | null>(null)
-	const contentRef = useRef<HTMLButtonElement | null>(null)
-
-	const togglePopover = () => setIsOpen(prev => !prev)
-
-	const handleClickOutside = (e: MouseEvent) => {
-		if (
-			contentRef.current &&
-			!contentRef.current.contains(e.target as Node) &&
-			buttonRef.current &&
-			!buttonRef.current.contains(e.target as Node)
-		) {
-			setIsOpen(false)
-		}
-	}
-
-	useEffect(() => {
-		if (isOpen) {
-			document.addEventListener('mousedown', handleClickOutside)
-		} else {
-			document.removeEventListener('mousedown', handleClickOutside)
-		}
-
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside)
-		}
-	}, [isOpen])
-
+export function Popover({
+	isOpen,
+	onToogle,
+	onClose,
+	trigger,
+	children,
+	className
+}: Props) {
+	const ref = useClickOutside<HTMLDivElement>(() => onClose())
 	return (
-		<div className={styles.popover}>
-			<button
-				ref={buttonRef}
-				onClick={togglePopover}
-				className={styles.popover__trigger}
-			>
-				{buttonLabel}
-			</button>
+		<div className={cn(styles.root, className)} ref={ref}>
+			<Button variant='outline' className={styles.trigger} onClick={onToogle}>
+				{trigger}
+			</Button>
 			<AnimatePresence>
 				{isOpen && (
-					<motion.div
-						{...popoverAnimate}
-						ref={contentRef as Ref<HTMLDivElement>}
-						className={cn(
-							styles.popover__content,
-							position === 'left' && styles.popover__content_left,
-							position === 'right' && styles.popover__content_right,
-							position === 'top' && styles.popover__content_top,
-							position === 'bottom' && styles.popover__content_bottom
-						)}
-					>
+					<motion.div {...popoverAnimate} className={cn(styles.content)}>
 						{children}
 					</motion.div>
 				)}

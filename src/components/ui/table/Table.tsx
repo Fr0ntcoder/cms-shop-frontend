@@ -17,7 +17,7 @@ interface Props {
 
 export function Table({ columns, data }: Props) {
 	return (
-		<table className={styles.table}>
+		<table className={styles.root}>
 			<thead>
 				<tr>
 					{columns.map(column => (

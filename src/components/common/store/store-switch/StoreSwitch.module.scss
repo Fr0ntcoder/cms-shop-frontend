@@ -1,0 +1,12 @@
+.wrapper {
+	display: flex;
+	align-items: center;
+}
+
+.switch {
+	&__trigger {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+}

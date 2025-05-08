@@ -1,0 +1,24 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 30px;
+}
+
+.left {
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	background: rgb(var(--primary));
+
+	& > svg {
+		fill: #fff;
+	}
+}
+
+.right {
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}

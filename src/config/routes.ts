@@ -2,6 +2,7 @@ const BASE_AUTH = '/auth'
 const BASE_USER = '/users'
 const BASE_REVIEW = '/reviews'
 const BASE_STORE = '/stores'
+const BASE_DASHBOARD = '/dashboard'
 const BASE_CATEGORY = '/categories'
 const BASE_PRODUCT = '/products'
 const BASE_COLOR = '/colors'
@@ -10,7 +11,12 @@ const BASE_FILES = '/files'
 const BASE_STATISCTICS = '/statistics'
 
 export const ROUTES = {
+	HOME: '/',
+	DASHBOARD: {
+		INDEX: BASE_DASHBOARD
+	},
 	AUTH: {
+		INDEX: BASE_AUTH,
 		LOGIN: `${BASE_AUTH}/login`,
 		REGISTER: `${BASE_AUTH}/register`,
 		TOKEN: `${BASE_AUTH}/login/access-token`,
@@ -28,6 +34,12 @@ export const ROUTES = {
 		DELETE: (reviewId: string) => `${BASE_REVIEW}/${reviewId}`
 	},
 	STORE: {
+		HOME: (storeId: string) => `${BASE_STORE}/${storeId}`,
+		PRODUCTS: (storeId: string) => `${BASE_STORE}/${storeId}/products`,
+		CATEGORIES: (storeId = '') => `${BASE_STORE}/${storeId}/categories`,
+		COLORS: (storeId = '') => `${BASE_STORE}/${storeId}/colors`,
+		REVIEWS: (storeId = '') => `${BASE_STORE}/${storeId}/reviews`,
+		SETTINGS: (storeId = '') => `${BASE_STORE}/${storeId}/settings`,
 		ID: (storeId: string) => `${BASE_STORE}/by-id/${storeId}`,
 		CREATE: BASE_STORE,
 		UPDATE: (storeId: string) => `${BASE_STORE}/${storeId}`,

@@ -1,0 +1,38 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.item {
+	display: flex;
+	align-items: center;
+	transition: all 0.3s ease-in-out;
+	cursor: pointer;
+	&:hover {
+		opacity: 0.5;
+	}
+
+	& > svg {
+		margin-right: 10px;
+	}
+
+	& span {
+		display: inline-block;
+	}
+}
+
+.create {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+
+	& > svg {
+		margin-right: 10px;
+	}
+}
