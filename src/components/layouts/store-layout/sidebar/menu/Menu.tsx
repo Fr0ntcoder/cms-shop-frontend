@@ -27,7 +27,7 @@ export function Menu({ className }: Props) {
 		{
 			id: 1,
 			icon: BarChart,
-			link: ROUTES.STORE.HOME(params.storeId),
+			link: ROUTES.STORE.ID(params.storeId),
 			text: 'Статистика'
 		},
 		{

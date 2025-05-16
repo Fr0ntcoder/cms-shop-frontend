@@ -1,13 +1,13 @@
 import { axiosWithAuth } from '@/api/api.interceptors'
 
-import { ROUTES } from '@/config/routes'
+import { API_URL } from '@/config/api-url'
 
 import { IUser } from '@/shared/types'
 
 class UserService {
 	async getProfile() {
 		const { data } = await axiosWithAuth<IUser>({
-			url: ROUTES.USER.PROFILE,
+			url: API_URL.USER.PROFILE,
 			method: 'GET'
 		})
 
@@ -16,7 +16,7 @@ class UserService {
 
 	async toogleFavorite(productId: string) {
 		return axiosWithAuth<IUser>({
-			url: ROUTES.USER.FAVORITES(productId),
+			url: API_URL.USER.FAVORITES(productId),
 			method: 'PATCH'
 		})
 	}

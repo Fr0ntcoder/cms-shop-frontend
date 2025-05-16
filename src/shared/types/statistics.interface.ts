@@ -14,6 +14,7 @@ export interface ILastUsers {
 	name: string
 	email: string
 	total: number
+	picture: string
 }
 
 export interface IMiddleStatistics {

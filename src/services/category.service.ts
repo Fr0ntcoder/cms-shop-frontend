@@ -1,13 +1,13 @@
 import { axiosClassic, axiosWithAuth } from '@/api/api.interceptors'
 
-import { ROUTES } from '@/config/routes'
+import { API_URL } from '@/config/api-url'
 
 import { ICategory, ICategoryInput } from '@/shared/types'
 
 class CategoryService {
 	async getByStoreId(storeId: string) {
 		const { data } = await axiosClassic<ICategory>({
-			url: ROUTES.CATEGORY.STORE(storeId),
+			url: API_URL.CATEGORY.STORE(storeId),
 			method: 'GET'
 		})
 
@@ -16,7 +16,7 @@ class CategoryService {
 
 	async getById(categoryId: string) {
 		const { data } = await axiosClassic<ICategory>({
-			url: ROUTES.CATEGORY.ID(categoryId),
+			url: API_URL.CATEGORY.ID(categoryId),
 			method: 'GET'
 		})
 
@@ -25,7 +25,7 @@ class CategoryService {
 
 	async create(data: ICategoryInput, storeid: string) {
 		const { data: createdCategory } = await axiosWithAuth<ICategory>({
-			url: ROUTES.CATEGORY.CREATE(storeid),
+			url: API_URL.CATEGORY.CREATE(storeid),
 			method: 'POST',
 			data
 		})
@@ -35,7 +35,7 @@ class CategoryService {
 
 	async update(data: ICategoryInput, categoryId: string) {
 		const { data: updateCategory } = await axiosWithAuth<ICategory>({
-			url: ROUTES.CATEGORY.UPDATE(categoryId),
+			url: API_URL.CATEGORY.UPDATE(categoryId),
 			method: 'PUT',
 			data
 		})
@@ -45,7 +45,7 @@ class CategoryService {
 
 	async delete(categoryId: string) {
 		const { data: deleteCategory } = await axiosWithAuth<ICategory>({
-			url: ROUTES.CATEGORY.DELETE(categoryId),
+			url: API_URL.CATEGORY.DELETE(categoryId),
 			method: 'DELETE'
 		})
 

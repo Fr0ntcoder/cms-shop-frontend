@@ -1,14 +1,14 @@
 const BASE_AUTH = '/auth'
-const BASE_USER = '/users'
-const BASE_REVIEW = '/reviews'
-const BASE_STORE = '/stores'
+const BASE_USER = '/user'
+const BASE_REVIEW = '/review'
+const BASE_STORE = '/store'
 const BASE_DASHBOARD = '/dashboard'
-const BASE_CATEGORY = '/categories'
-const BASE_PRODUCT = '/products'
-const BASE_COLOR = '/colors'
-const BASE_ORDER = '/orders'
-const BASE_FILES = '/files'
-const BASE_STATISCTICS = '/statistics'
+const BASE_CATEGORY = '/category'
+const BASE_PRODUCT = '/product'
+const BASE_COLOR = '/color'
+const BASE_ORDER = '/order'
+const BASE_FILES = '/file'
+const BASE_STATISCTICS = '/statistic'
 
 export const ROUTES = {
 	HOME: '/',
@@ -34,23 +34,19 @@ export const ROUTES = {
 		DELETE: (reviewId: string) => `${BASE_REVIEW}/${reviewId}`
 	},
 	STORE: {
-		HOME: (storeId: string) => `${BASE_STORE}/${storeId}`,
+		ID: (storeId: string) => `${BASE_STORE}/${storeId}`,
 		PRODUCTS: (storeId: string) => `${BASE_STORE}/${storeId}/products`,
 		CATEGORIES: (storeId = '') => `${BASE_STORE}/${storeId}/categories`,
 		COLORS: (storeId = '') => `${BASE_STORE}/${storeId}/colors`,
 		REVIEWS: (storeId = '') => `${BASE_STORE}/${storeId}/reviews`,
-		SETTINGS: (storeId = '') => `${BASE_STORE}/${storeId}/settings`,
-		ID: (storeId: string) => `${BASE_STORE}/by-id/${storeId}`,
-		CREATE: BASE_STORE,
-		UPDATE: (storeId: string) => `${BASE_STORE}/${storeId}`,
-		DELETE: (storeId: string) => `${BASE_STORE}/${storeId}`
+		SETTINGS: (storeId = '') => `${BASE_STORE}/${storeId}/settings`
 	},
 	CATEGORY: {
 		ID: (categoryId: string) => `${BASE_CATEGORY}/by-id/${categoryId}`,
-		STORE: (storeId: string) => `${BASE_CATEGORY}/by-storeId/${storeId}`,
-		CREATE: (storeId: string) => `${BASE_CATEGORY}/${storeId}`,
+		STORE: (storeId: string) => `${BASE_CATEGORY}/by-storeId/${storeId}`
+		/* CREATE: (storeId: string) => `${BASE_CATEGORY}/${storeId}`,
 		UPDATE: (categoryId: string) => `${BASE_CATEGORY}/${categoryId}`,
-		DELETE: (categoryId: string) => `${BASE_STORE}/${categoryId}`
+		DELETE: (categoryId: string) => `${BASE_STORE}/${categoryId}` */
 	},
 	PRODUCT: {
 		ALL: BASE_PRODUCT,
@@ -59,17 +55,17 @@ export const ROUTES = {
 		CATEGORY: (categoryId: string) =>
 			`${BASE_PRODUCT}/by-category/${categoryId}`,
 		POPULAR: `${BASE_PRODUCT}/most-popular`,
-		SIMILAR: (productId: string) => `${BASE_PRODUCT}/similar/${productId}`,
-		CREATE: (storeId: string) => `${BASE_PRODUCT}/${storeId}`,
+		SIMILAR: (productId: string) => `${BASE_PRODUCT}/similar/${productId}`
+		/* CREATE: (storeId: string) => `${BASE_PRODUCT}/${storeId}`,
 		UPDATE: (productId: string) => `${BASE_PRODUCT}/${productId}`,
-		DELETE: (productId: string) => `${BASE_PRODUCT}/${productId}`
+		DELETE: (productId: string) => `${BASE_PRODUCT}/${productId}` */
 	},
 	COLOR: {
 		ID: (colorId: string) => `${BASE_COLOR}/by-id/${colorId}`,
-		STORE: (storeId: string) => `${BASE_COLOR}/by-storeId/${storeId}`,
-		CREATE: (storeId: string) => `${BASE_COLOR}/${storeId}`,
+		STORE: (storeId: string) => `${BASE_COLOR}/by-storeId/${storeId}`
+		/* CREATE: (storeId: string) => `${BASE_COLOR}/${storeId}`,
 		UPDATE: (colorId: string) => `${BASE_COLOR}/${colorId}`,
-		DELETE: (colorId: string) => `${BASE_COLOR}/${colorId}`
+		DELETE: (colorId: string) => `${BASE_COLOR}/${colorId}` */
 	},
 	ORDER: {
 		PAYMENT: `${BASE_ORDER}/orders/place`

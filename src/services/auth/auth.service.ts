@@ -1,6 +1,6 @@
 import { axiosClassic } from '@/api/api.interceptors'
 
-import { ROUTES } from '@/config/routes'
+import { API_URL } from '@/config/api-url'
 
 import {
 	removeFromStorage,
@@ -12,7 +12,7 @@ import { IAuthForm, IAuthResponse } from '@/shared/types'
 class AuthService {
 	async main(type: 'login' | 'register', data: IAuthForm) {
 		const response = await axiosClassic<IAuthResponse>({
-			url: type === 'login' ? ROUTES.AUTH.LOGIN : ROUTES.AUTH.REGISTER,
+			url: type === 'login' ? API_URL.AUTH.LOGIN : API_URL.AUTH.REGISTER,
 			method: 'POST',
 			data
 		})
@@ -25,7 +25,7 @@ class AuthService {
 
 	async getNewTokens() {
 		const response = await axiosClassic<IAuthResponse>({
-			url: ROUTES.AUTH.TOKEN,
+			url: API_URL.AUTH.TOKEN,
 			method: 'POST'
 		})
 
@@ -38,7 +38,7 @@ class AuthService {
 
 	async logout() {
 		const response = await axiosClassic<boolean>({
-			url: ROUTES.AUTH.LOGOUT,
+			url: API_URL.AUTH.LOGOUT,
 			method: 'POST'
 		})
 

@@ -1,13 +1,13 @@
 import { axiosClassic, axiosWithAuth } from '@/api/api.interceptors'
 
-import { ROUTES } from '@/config/routes'
+import { API_URL } from '@/config/api-url'
 
 import { IProduct, IProductInput } from '@/shared/types'
 
 class ProductService {
 	async getAll(searchTerm?: string | null) {
 		const { data } = await axiosClassic<IProduct[]>({
-			url: ROUTES.PRODUCT.ALL,
+			url: API_URL.PRODUCT.ALL,
 			method: 'GET',
 			params: searchTerm ? { searchTerm } : {}
 		})
@@ -17,7 +17,7 @@ class ProductService {
 
 	async getByStoreId(storeId: string) {
 		const { data } = await axiosWithAuth<IProduct[]>({
-			url: ROUTES.PRODUCT.STORE(storeId),
+			url: API_URL.PRODUCT.STORE(storeId),
 			method: 'GET'
 		})
 
@@ -26,7 +26,7 @@ class ProductService {
 
 	async getById(productId: string) {
 		const { data } = await axiosClassic<IProduct>({
-			url: ROUTES.PRODUCT.ID(productId),
+			url: API_URL.PRODUCT.ID(productId),
 			method: 'GET'
 		})
 
@@ -35,7 +35,7 @@ class ProductService {
 
 	async getByCategory(categoryId: string) {
 		const { data } = await axiosClassic<IProduct[]>({
-			url: ROUTES.PRODUCT.CATEGORY(categoryId),
+			url: API_URL.PRODUCT.CATEGORY(categoryId),
 			method: 'GET'
 		})
 
@@ -44,7 +44,7 @@ class ProductService {
 
 	async getMostPopular() {
 		const { data } = await axiosClassic<IProduct[]>({
-			url: ROUTES.PRODUCT.POPULAR,
+			url: API_URL.PRODUCT.POPULAR,
 			method: 'GET'
 		})
 
@@ -53,7 +53,7 @@ class ProductService {
 
 	async getSimilar(productId: string) {
 		const { data } = await axiosClassic<IProduct[]>({
-			url: ROUTES.PRODUCT.SIMILAR(productId),
+			url: API_URL.PRODUCT.SIMILAR(productId),
 			method: 'GET'
 		})
 
@@ -62,7 +62,7 @@ class ProductService {
 
 	async create(data: IProductInput, storeid: string) {
 		const { data: createdProduct } = await axiosWithAuth<IProduct[]>({
-			url: ROUTES.PRODUCT.CREATE(storeid),
+			url: API_URL.PRODUCT.CREATE(storeid),
 			method: 'POST',
 			data
 		})
@@ -72,7 +72,7 @@ class ProductService {
 
 	async update(data: IProductInput, productId: string) {
 		const { data: updateProduct } = await axiosWithAuth<IProduct[]>({
-			url: ROUTES.PRODUCT.UPDATE(productId),
+			url: API_URL.PRODUCT.UPDATE(productId),
 			method: 'PUT',
 			data
 		})
@@ -82,7 +82,7 @@ class ProductService {
 
 	async delete(productId: string) {
 		const { data: deleteProduct } = await axiosWithAuth<IProduct>({
-			url: ROUTES.PRODUCT.DELETE(productId),
+			url: API_URL.PRODUCT.DELETE(productId),
 			method: 'DELETE'
 		})
 

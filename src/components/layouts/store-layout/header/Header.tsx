@@ -6,7 +6,7 @@ import { ProfileUser } from '@/components/common/profile'
 
 import { useProfile } from '@/hooks/profile/useProfile'
 
-import { StoreSwitch } from '../../../common/store/store-switch'
+import { StoreSwitch } from './store'
 
 import styles from './Header.module.scss'
 

@@ -1,5 +1,13 @@
-.wrapper {
+.root {
 	display: grid;
 	grid-template-columns: 300px 1fr;
-	gap: 30px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.content {
+	padding: 30px;
 }

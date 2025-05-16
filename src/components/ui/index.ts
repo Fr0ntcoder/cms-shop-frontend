@@ -1,5 +1,6 @@
 export * from './button'
 export * from './dropdown-menu'
+export * from './error-load-data'
 export * from './input'
 export * from './logo'
 export * from './modal'

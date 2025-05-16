@@ -1,13 +1,13 @@
 import { axiosWithAuth } from '@/api/api.interceptors'
 
-import { ROUTES } from '@/config/routes'
+import { API_URL } from '@/config/api-url'
 
 import { IReview, IReviewInput } from '@/shared/types'
 
 class ReviewService {
 	async getByStoreId(storeId: string) {
 		const { data } = await axiosWithAuth<IReview[]>({
-			url: ROUTES.REVIEW.STORE(storeId),
+			url: API_URL.REVIEW.STORE(storeId),
 			method: 'GET'
 		})
 
@@ -16,7 +16,7 @@ class ReviewService {
 
 	async create(data: IReviewInput, productId: string, storeid: string) {
 		const { data: createdReview } = await axiosWithAuth<IReview>({
-			url: ROUTES.REVIEW.CREATE(productId, storeid),
+			url: API_URL.REVIEW.CREATE(productId, storeid),
 			method: 'POST',
 			data
 		})
@@ -26,7 +26,7 @@ class ReviewService {
 
 	async delete(reviewId: string) {
 		const { data: deleteReview } = await axiosWithAuth<IReview>({
-			url: ROUTES.REVIEW.DELETE(reviewId),
+			url: API_URL.REVIEW.DELETE(reviewId),
 			method: 'DELETE'
 		})
 

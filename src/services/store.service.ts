@@ -1,13 +1,13 @@
 import { axiosWithAuth } from '@/api/api.interceptors'
 
-import { ROUTES } from '@/config/routes'
+import { API_URL } from '@/config/api-url'
 
 import { IStore, IStoreCreate } from '@/shared/types'
 
 class StoreService {
 	async getById(storeId: string) {
 		const { data } = await axiosWithAuth<IStore>({
-			url: ROUTES.STORE.ID(storeId),
+			url: API_URL.STORE.ID(storeId),
 			method: 'GET'
 		})
 
@@ -16,7 +16,7 @@ class StoreService {
 
 	async create(data: IStoreCreate) {
 		const { data: createdStore } = await axiosWithAuth<IStore>({
-			url: ROUTES.STORE.CREATE,
+			url: API_URL.STORE.CREATE,
 			method: 'POST',
 			data
 		})
@@ -26,7 +26,7 @@ class StoreService {
 
 	async update(data: IStoreCreate, storeId: string) {
 		const { data: updateStore } = await axiosWithAuth<IStore>({
-			url: ROUTES.STORE.UPDATE(storeId),
+			url: API_URL.STORE.UPDATE(storeId),
 			method: 'PUT',
 			data
 		})
@@ -36,7 +36,7 @@ class StoreService {
 
 	async delete(storeId: string) {
 		const { data: deleteStore } = await axiosWithAuth<IStore>({
-			url: ROUTES.STORE.DELETE(storeId),
+			url: API_URL.STORE.DELETE(storeId),
 			method: 'DELETE'
 		})
 

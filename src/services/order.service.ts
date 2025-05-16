@@ -1,13 +1,13 @@
 import { axiosWithAuth } from '@/api/api.interceptors'
 
-import { ROUTES } from '@/config/routes'
+import { API_URL } from '@/config/api-url'
 
 import { IPaymentResponse, OrderTypeData } from '@/shared/types'
 
 class OrderService {
 	async place(data: OrderTypeData) {
 		return axiosWithAuth<IPaymentResponse>({
-			url: ROUTES.ORDER.PAYMENT,
+			url: API_URL.ORDER.PAYMENT,
 			method: 'POST',
 			data
 		})

@@ -12,7 +12,7 @@ interface Props {
 
 export function StoreLayout({ children }: PropsWithChildren) {
 	return (
-		<div className={cn(styles.wrapper)}>
+		<div className={cn(styles.root)}>
 			<Sidebar />
 			<div className={styles.container}>
 				<Header />
