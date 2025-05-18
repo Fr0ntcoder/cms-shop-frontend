@@ -2,16 +2,16 @@ import cn from 'clsx'
 
 import { Title } from '@/components/ui'
 
-import { MainStatistics } from './statistics/main-statistics'
-import { MiddleStatistics } from './statistics/middle-statistics'
+import { MainStatistics } from './main-statistics'
+import { MiddleStatistics } from './middle-statistics'
 
-import styles from './Store.module.scss'
+import styles from './Statistics.module.scss'
 
 interface Props {
 	className?: string
 }
 
-export function Store({ className }: Props) {
+export function Statistics({ className }: Props) {
 	return (
 		<div className={cn(styles.root, className)}>
 			<Title className={styles.title} size='lg'>

@@ -34,7 +34,7 @@ export const ROUTES = {
 		DELETE: (reviewId: string) => `${BASE_REVIEW}/${reviewId}`
 	},
 	STORE: {
-		ID: (storeId: string) => `${BASE_STORE}/${storeId}`,
+		ID: (storeId: string) => `${BASE_STORE}/${storeId}/statistics`,
 		PRODUCTS: (storeId: string) => `${BASE_STORE}/${storeId}/products`,
 		CATEGORIES: (storeId = '') => `${BASE_STORE}/${storeId}/categories`,
 		COLORS: (storeId = '') => `${BASE_STORE}/${storeId}/colors`,

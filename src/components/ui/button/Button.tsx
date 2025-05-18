@@ -5,7 +5,7 @@ import { ButtonHTMLAttributes, forwardRef } from 'react'
 
 import styles from './Button.module.scss'
 
-type ButtonVariants = 'default' | 'outline' | 'ghost' | 'link'
+type ButtonVariants = 'default' | 'primary' | 'outline' | 'ghost' | 'link'
 
 type ButtonSize = 'sm' | 'md' | 'lg' | 'icon'
 
@@ -22,7 +22,7 @@ export const Button = forwardRef<HTMLButtonElement, IButtonVariants>(
 	(
 		{
 			className,
-			variant = 'default',
+			variant = 'primary',
 			size = 'sm',
 			asChild = false,
 			children,

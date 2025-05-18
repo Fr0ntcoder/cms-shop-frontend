@@ -2,7 +2,7 @@ import { axiosWithAuth } from '@/api/api.interceptors'
 
 import { API_URL } from '@/config/api-url'
 
-import { IStore, IStoreCreate } from '@/shared/types'
+import { IStore, TStoreCreateData, TStoreUpdateData } from '@/shared/types'
 
 class StoreService {
 	async getById(storeId: string) {
@@ -14,7 +14,7 @@ class StoreService {
 		return data
 	}
 
-	async create(data: IStoreCreate) {
+	async create(data: TStoreCreateData) {
 		const { data: createdStore } = await axiosWithAuth<IStore>({
 			url: API_URL.STORE.CREATE,
 			method: 'POST',
@@ -24,7 +24,7 @@ class StoreService {
 		return createdStore
 	}
 
-	async update(data: IStoreCreate, storeId: string) {
+	async update(storeId: string, data: TStoreUpdateData) {
 		const { data: updateStore } = await axiosWithAuth<IStore>({
 			url: API_URL.STORE.UPDATE(storeId),
 			method: 'PUT',

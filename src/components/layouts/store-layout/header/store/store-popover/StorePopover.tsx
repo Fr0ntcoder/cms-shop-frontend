@@ -1,4 +1,4 @@
-import { Plus, StoreIcon } from 'lucide-react'
+import { ChevronsUpDown, Plus, StoreIcon } from 'lucide-react'
 import Link from 'next/link'
 
 import { Popover } from '@/components/ui'
@@ -32,10 +32,11 @@ export function StorePopover({ onClick, stores, className }: Props) {
 	return (
 		<Popover
 			trigger={
-				<>
+				<div className={styles.trigger}>
 					<StoreIcon />
 					Текущий магазин
-				</>
+					<ChevronsUpDown />
+				</div>
 			}
 			isOpen={isOpen}
 			onToogle={onToogle}

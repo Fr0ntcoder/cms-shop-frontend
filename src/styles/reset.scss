@@ -34,6 +34,7 @@ h4,
 h5 {
 	margin: 0;
 	font-weight: bold;
+	line-height: 1;
 }
 
 /* Grouping content
@@ -151,7 +152,6 @@ img {
  * 2. Remove the margin in Firefox and Safari.
  */
 
-button,
 input,
 optgroup,
 select,
@@ -159,8 +159,15 @@ textarea {
 	font-family: inherit; /* 1 */
 	font-size: 100%; /* 1 */
 	margin: 0; /* 2 */
+	line-height: 1.4;
 }
 
+button {
+	font-family: inherit; /* 1 */
+	font-size: 100%; /* 1 */
+	margin: 0; /* 2 */
+	line-height: 1;
+}
 /**
  * Show the overflow in IE.
  * 1. Show the overflow in Edge.

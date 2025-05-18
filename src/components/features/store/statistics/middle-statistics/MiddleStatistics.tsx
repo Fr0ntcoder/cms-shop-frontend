@@ -4,7 +4,7 @@ import cn from 'clsx'
 
 import { ErrorLoadData } from '@/components/ui'
 
-import { useQueryStatistics } from '@/hooks/statistics/useQueryStatistics'
+import { useMiddleStatistics } from '@/hooks/statistics/useMiddleStatistics'
 
 import { MiddleStatisticsOverview } from './middle-statistics-overview'
 import { MiddleStatisticsSkeleton } from './middle-statistics-skeleton'
@@ -17,21 +17,20 @@ interface Props {
 }
 
 export function MiddleStatistics({ className }: Props) {
-	const { middleData, isLoadingMiddleData, isErrorMiddleData } =
-		useQueryStatistics()
+	const { data, isLoading, error } = useMiddleStatistics()
 
-	if (isLoadingMiddleData) {
+	if (isLoading) {
 		return <MiddleStatisticsSkeleton />
 	}
 
-	if (!middleData || isErrorMiddleData) {
+	if (!data || error) {
 		return <ErrorLoadData />
 	}
 
 	return (
 		<div className={cn(styles.root, className)}>
-			<MiddleStatisticsOverview data={middleData.monthlySales} />
-			<MiddleStatisticsUsers data={middleData.lastUsers} />
+			<MiddleStatisticsOverview data={data.monthlySales} />
+			<MiddleStatisticsUsers data={data.lastUsers} />
 		</div>
 	)
 }

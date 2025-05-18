@@ -37,7 +37,7 @@ export function AuthForm({ className }: Props) {
 					)}
 					<FieldInput name='email' required className={styles.form__input} />
 					<FieldInput name='password' required className={styles.form__input} />
-					<Button type='submit' variant='default' size='sm'>
+					<Button type='submit' variant='primary' size='sm'>
 						{isReg ? 'Войти' : 'Зарегистрироваться'}
 					</Button>
 				</form>

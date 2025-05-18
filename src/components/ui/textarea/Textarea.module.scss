@@ -1,12 +1,12 @@
 .root {
 	display: flex;
 	min-height: 80px;
-	font-size: 14px;
-	border-radius: var(--radius-low);
-	border: 1px solid var(--input);
-	padding: 8px 15px;
-	resize: none;
-	color: var(--muted-foreground);
+	font-size: 16px;
+	border-radius: var(--rounded-md);
+	border: 1px solid rgb(var(--border));
+	color: rgb(var(--text-secondary));
+	background-color: white;
+	padding: 12px;
 
 	&::placeholder {
 		color: var(--muted-foreground);

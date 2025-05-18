@@ -4,12 +4,10 @@
 
 .content {
 	position: absolute;
-	min-width: 200px;
+	width: 100%;
 	display: flex;
 	top: calc(100% + 10px);
-	left: calc(50% - 100px);
-	justify-content: center;
-	align-items: center;
+	left: 0;
 	z-index: 10;
 }
 

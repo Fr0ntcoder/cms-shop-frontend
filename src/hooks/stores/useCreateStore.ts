@@ -10,7 +10,7 @@ import { IStoreCreate } from '@/shared/types'
 export const useCreateStore = () => {
 	const router = useRouter()
 	const queryClient = useQueryClient()
-	const { mutate: createStore, isPending: isCreateLoading } = useMutation({
+	const { mutate: createStore, isPending } = useMutation({
 		mutationKey: ['create store'],
 		mutationFn: (data: IStoreCreate) => storeService.create(data),
 		onSuccess(store) {
@@ -28,8 +28,8 @@ export const useCreateStore = () => {
 	return useMemo(
 		() => ({
 			createStore,
-			isCreateLoading
+			isPending
 		}),
-		[createStore, isCreateLoading]
+		[createStore, isPending]
 	)
 }

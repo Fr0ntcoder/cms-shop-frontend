@@ -1,11 +1,7 @@
-.root {
+.textarea {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-
-	input {
-		width: 100%;
-	}
 }
 
 .label {
@@ -13,11 +9,4 @@
 	font-weight: bold;
 	margin-bottom: 8px;
 	color: rgb(var(--text-primary));
-}
-
-.relative {
-	display: flex;
-	justify-content: space-between;
-	border-radius: var(--radius-mid);
-	border: 1px solid var(--input);
 }

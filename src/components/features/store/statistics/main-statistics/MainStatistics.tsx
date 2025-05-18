@@ -4,22 +4,22 @@ import { MainStatisticsList } from '@/components/features/store/statistics/main-
 import { MainStatisticsSkeleton } from '@/components/features/store/statistics/main-statistics/main-statistics-skeleton'
 import { ErrorLoadData } from '@/components/ui'
 
-import { useQueryStatistics } from '@/hooks/statistics/useQueryStatistics'
+import { useMainStatistics } from '@/hooks/statistics/useMainStatistics'
 
 interface Props {
 	className?: string
 }
 
 export function MainStatistics({ className }: Props) {
-	const { mainData, isLoadingMainData, isErrorMainData } = useQueryStatistics()
+	const { data, isLoading, error } = useMainStatistics()
 
-	if (isLoadingMainData) {
+	if (isLoading) {
 		return <MainStatisticsSkeleton />
 	}
 
-	if (!mainData || isErrorMainData) {
+	if (!data || error) {
 		return <ErrorLoadData />
 	}
 
-	return <MainStatisticsList data={mainData} />
+	return <MainStatisticsList data={data} />
 }

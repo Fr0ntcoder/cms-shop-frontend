@@ -8,8 +8,7 @@ import { Button, Title } from '@/components/ui'
 
 import { useCreateStore } from '@/hooks/stores/useCreateStore'
 
-import { storeCreateModalShemas } from '@/shared/schemes/store/store-create-modal.schemas'
-import { IStoreCreate } from '@/shared/types'
+import { TStoreCreateData, storeCreateShemas } from '@/shared/types'
 
 import styles from './StoreCreateForm.module.scss'
 
@@ -20,15 +19,15 @@ interface Props {
 
 export function StoreCreateForm({ onClose, className }: Props) {
 	const { createStore } = useCreateStore()
-	const form = useForm<IStoreCreate>({
-		resolver: zodResolver(storeCreateModalShemas),
+	const form = useForm<TStoreCreateData>({
+		resolver: zodResolver(storeCreateShemas),
 		mode: 'onChange',
 		defaultValues: {
 			title: ''
 		}
 	})
 
-	const onSubmit: SubmitHandler<IStoreCreate> = data => {
+	const onSubmit: SubmitHandler<TStoreCreateData> = data => {
 		createStore(data)
 		onClose()
 	}

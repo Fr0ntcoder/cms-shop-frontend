@@ -8,13 +8,12 @@ import { ROUTES } from '@/config/routes'
 
 import { authService } from '@/services/auth/auth.service'
 
-import { TFormAuthValues, formAuthSchema } from '@/shared/schemes'
-import { IAuthForm } from '@/shared/types'
+import { TAuthData, authFormSchemas } from '@/shared/types'
 
 export const useAuthForm = (isReg: boolean) => {
 	const router = useRouter()
-	const form = useForm<TFormAuthValues>({
-		resolver: zodResolver(formAuthSchema),
+	const form = useForm<TAuthData>({
+		resolver: zodResolver(authFormSchemas),
 		defaultValues: {
 			name: '',
 			email: '',
@@ -24,7 +23,7 @@ export const useAuthForm = (isReg: boolean) => {
 
 	const { mutate, isPending } = useMutation({
 		mutationKey: ['auth reg'],
-		mutationFn: (data: IAuthForm) =>
+		mutationFn: (data: TAuthData) =>
 			authService.main(isReg ? 'login' : 'register', data),
 		onSuccess() {
 			form.reset()
@@ -61,7 +60,7 @@ export const useAuthForm = (isReg: boolean) => {
 		}
 	})
 
-	const onSubmit: SubmitHandler<IAuthForm> = data => {
+	const onSubmit: SubmitHandler<TAuthData> = data => {
 		mutate(data)
 	}
 

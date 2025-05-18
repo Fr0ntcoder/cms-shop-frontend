@@ -7,10 +7,10 @@ import {
 	saveTokenStorage
 } from '@/services/auth/auth-token.service'
 
-import { IAuthForm, IAuthResponse } from '@/shared/types'
+import { IAuthResponse, TAuthData } from '@/shared/types'
 
 class AuthService {
-	async main(type: 'login' | 'register', data: IAuthForm) {
+	async main(type: 'login' | 'register', data: TAuthData) {
 		const response = await axiosClassic<IAuthResponse>({
 			url: type === 'login' ? API_URL.AUTH.LOGIN : API_URL.AUTH.REGISTER,
 			method: 'POST',
