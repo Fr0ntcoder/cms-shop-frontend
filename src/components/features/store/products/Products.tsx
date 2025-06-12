@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
 import { Button, Title } from '@/components/ui/common'
+import { ErrorLoadData, Loader } from '@/components/ui/elements'
 import { DataTable } from '@/components/ui/elements/data-table'
 
 import { ROUTES } from '@/config/routes'
@@ -26,17 +27,25 @@ interface Props {
 
 export function Products({ className }: Props) {
 	const params = useParams<TParamsProduct>()
-	const { products, isLoading } = useGetProducts()
-	const formatedProducts: IProductColumn[] = products
-		? products.map(item => ({
-				id: item.id,
-				title: item.title,
-				price: formatPrice(item.price),
-				category: item.category.title,
-				color: item.color.value,
-				storeId: item.storeId
-			}))
-		: []
+	const { products, isLoading, error } = useGetProducts()
+
+	if (isLoading) {
+		return <Loader />
+	}
+
+	if (error) {
+		return <ErrorLoadData />
+	}
+
+	const formatedProducts: IProductColumn[] = products.map(product => ({
+		id: product.id,
+		title: product.title,
+		price: formatPrice(product.price),
+		category: product.category.title,
+		color: product.color.value,
+		storeId: product.storeId
+	}))
+
 	return (
 		<div className={cn(styles.root, className)}>
 			<div className={styles.header}>

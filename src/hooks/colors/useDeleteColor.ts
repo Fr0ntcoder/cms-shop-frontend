@@ -1,18 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useParams } from 'next/navigation'
-import { useRouter } from 'next/router'
+import { useParams, useRouter } from 'next/navigation'
 import { useMemo } from 'react'
 import toast from 'react-hot-toast'
 
 import { colorService } from '@/services/color.service'
 
-export const useDeleteProduct = () => {
+export const useDeleteColor = () => {
 	const params = useParams<{ storeId: string; colorId: string }>()
 	const router = useRouter()
 
 	const queryClient = useQueryClient()
 
-	const { mutate: deleteCategory, isPending: isLoadingDelete } = useMutation({
+	const { mutate: deleteColor, isPending: isLoadingDelete } = useMutation({
 		mutationKey: ['delete color'],
 		mutationFn: () => colorService.delete(params.colorId),
 		onSuccess() {
@@ -29,9 +28,9 @@ export const useDeleteProduct = () => {
 
 	return useMemo(
 		() => ({
-			deleteCategory,
+			deleteColor,
 			isLoadingDelete
 		}),
-		[deleteCategory, isLoadingDelete]
+		[deleteColor, isLoadingDelete]
 	)
 }

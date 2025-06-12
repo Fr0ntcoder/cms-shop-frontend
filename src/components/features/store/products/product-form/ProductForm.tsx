@@ -9,37 +9,35 @@ import { Button, Dialog, Select, Title } from '@/components/ui/common'
 import { FieldInput, FieldTextarea } from '@/components/ui/elements'
 import { FieldUpload } from '@/components/ui/elements/fields/field-upload'
 
+import { useGetCategories } from '@/hooks/categories/useGetCategories'
+import { useGetColors } from '@/hooks/colors/useGetColors'
 import { useCreateProduct } from '@/hooks/products/useCreateProduct'
 import { useDeleteProduct } from '@/hooks/products/useDeleteProduct'
 import { useUpdateProduct } from '@/hooks/products/useUpdateProduct'
 
-import {
-	ICategory,
-	IColor,
-	IProduct,
-	TProductFormData,
-	productFormShemas
-} from '@/shared/types'
+import { IProduct, TProductFormData, productFormShemas } from '@/shared/types'
 
 import styles from './ProductForm.module.scss'
 
 interface Props {
 	product?: IProduct
-	categories?: ICategory[]
-	colors?: IColor[]
 }
 
-export function ProductForm({ product, categories, colors }: Props) {
-	const [isOpen, setIsOpen] = useState(false)
+export function ProductForm({ product }: Props) {
 	const { createProduct, isLoadingCreate } = useCreateProduct()
 	const { updateProduct, isLoadingUpdate } = useUpdateProduct()
 	const { deleteProduct, isLoadingDelete } = useDeleteProduct()
+	const { categories } = useGetCategories()
+	const { colors } = useGetColors()
+	const [isOpen, setIsOpen] = useState(false)
+
 	const formatedCategories = categories
 		? categories?.map(item => ({
 				label: item.title,
 				value: item.id
 			}))
 		: []
+
 	const formatedColors = colors
 		? colors?.map(item => ({
 				label: item.name,
@@ -90,19 +88,23 @@ export function ProductForm({ product, categories, colors }: Props) {
 					</Title>
 					<p className={styles.description}>{description}</p>
 				</div>
-				<Dialog
-					isOpen={isOpen}
-					onClose={() => setIsOpen(false)}
-					onConfirm={handler}
-					cancelText='Нет'
-					confirmText='Да'
-					className={styles.modal}
-				>
-					<Title size='sm'>Вы уверены,что хотите удалить товар?</Title>
-				</Dialog>
-				<Button variant='primary' onClick={() => setIsOpen(true)}>
-					<Trash size={18} />
-				</Button>
+				{product && (
+					<>
+						<Dialog
+							isOpen={isOpen}
+							onClose={() => setIsOpen(false)}
+							onConfirm={handler}
+							cancelText='Нет'
+							confirmText='Да'
+							className={styles.modal}
+						>
+							<Title size='sm'>Вы уверены,что хотите удалить товар?</Title>
+						</Dialog>
+						<Button variant='primary' onClick={() => setIsOpen(true)}>
+							<Trash size={18} />
+						</Button>
+					</>
+				)}
 			</div>
 			<FormProvider {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>

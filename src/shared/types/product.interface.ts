@@ -14,12 +14,6 @@ export interface IProduct {
 	storeId: string
 }
 
-export interface IProductInput
-	extends Omit<IProduct, 'id' | 'reviews' | 'store' | 'category' | 'color'> {
-	categoryId: string
-	colorId: string
-}
-
 export const productFormShemas = z.object({
 	title: z.string().min(1, { message: 'Это поле обязательно!' }),
 	description: z.string().min(1, { message: 'Это поле обязательно!' }),

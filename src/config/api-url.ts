@@ -45,7 +45,7 @@ export const API_URL = {
 		STORE: (storeId: string) => `${BASE_CATEGORY}/by-storeId/${storeId}`,
 		CREATE: (storeId: string) => `${BASE_CATEGORY}/${storeId}`,
 		UPDATE: (categoryId: string) => `${BASE_CATEGORY}/${categoryId}`,
-		DELETE: (categoryId: string) => `${BASE_STORE}/${categoryId}`
+		DELETE: (categoryId: string) => `${BASE_CATEGORY}/${categoryId}`
 	},
 	PRODUCT: {
 		ALL: BASE_PRODUCT,

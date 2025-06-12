@@ -1,3 +1,5 @@
+import { z } from 'zod'
+
 export interface IColor {
 	id: string
 	name: string
@@ -6,4 +8,9 @@ export interface IColor {
 	createdAt: string
 }
 
-export interface IColorInput extends Pick<IColor, 'name' | 'value'> {}
+export const colorFormShemas = z.object({
+	name: z.string().min(1, { message: 'Это поле обязательно!' }),
+	value: z.string().min(1, { message: 'Это поле обязательно!' })
+})
+
+export type TColorFormData = z.infer<typeof colorFormShemas>

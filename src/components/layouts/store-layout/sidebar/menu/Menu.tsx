@@ -46,7 +46,7 @@ export function Menu({ className }: Props) {
 			id: 4,
 			icon: PaintBucket,
 			link: ROUTES.STORE.COLORS(params.storeId),
-			text: 'Цветы'
+			text: 'Цвета'
 		},
 		{
 			id: 5,

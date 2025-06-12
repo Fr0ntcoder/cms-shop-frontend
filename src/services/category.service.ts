@@ -2,7 +2,7 @@ import { axiosWithAuth } from '@/api/api.interceptors'
 
 import { API_URL } from '@/config/api-url'
 
-import { ICategory, ICategoryInput } from '@/shared/types'
+import { ICategory, TCategoryFormData } from '@/shared/types'
 
 class CategoryService {
 	async getByStoreId(storeId: string) {
@@ -23,7 +23,7 @@ class CategoryService {
 		return data
 	}
 
-	async create(storeid: string, data: ICategoryInput) {
+	async create(storeid: string, data: TCategoryFormData) {
 		const { data: createdCategory } = await axiosWithAuth<ICategory>({
 			url: API_URL.CATEGORY.CREATE(storeid),
 			method: 'POST',
@@ -33,7 +33,7 @@ class CategoryService {
 		return createdCategory
 	}
 
-	async update(categoryId: string, data: ICategoryInput) {
+	async update(categoryId: string, data: TCategoryFormData) {
 		const { data: updateCategory } = await axiosWithAuth<ICategory>({
 			url: API_URL.CATEGORY.UPDATE(categoryId),
 			method: 'PUT',

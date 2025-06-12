@@ -1,15 +1,21 @@
 'use client'
 
-import { useGetCategories } from '@/hooks/categories/useGetCategories'
-import { useGetColors } from '@/hooks/colors/useGetColors'
+import { ErrorLoadData, Loader } from '@/components/ui/elements'
+
 import { useGetProduct } from '@/hooks/products/useGetProduct'
 
 import { ProductForm } from '../product-form'
 
 export function ProductEdit() {
-	const { data } = useGetProduct()
-	const { categories } = useGetCategories()
-	const { colors } = useGetColors()
+	const { data, isLoading, error } = useGetProduct()
 
-	return <ProductForm product={data} categories={categories} colors={colors} />
+	if (isLoading) {
+		return <Loader />
+	}
+
+	if (!data || error) {
+		return <ErrorLoadData />
+	}
+
+	return <ProductForm product={data} />
 }

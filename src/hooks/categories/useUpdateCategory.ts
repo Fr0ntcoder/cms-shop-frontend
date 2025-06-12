@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 
 import { categoryService } from '@/services/category.service'
 
-import { ICategory } from '@/shared/types'
+import { TCategoryFormData } from '@/shared/types'
 
 export const useUpdateCategory = () => {
 	const params = useParams<{ categoryId: string }>()
@@ -13,7 +13,7 @@ export const useUpdateCategory = () => {
 
 	const { mutate: updateCategory, isPending: isLoadingUpdate } = useMutation({
 		mutationKey: ['update category'],
-		mutationFn: (data: ICategory) =>
+		mutationFn: (data: TCategoryFormData) =>
 			categoryService.update(params.categoryId, data),
 		onSuccess() {
 			queryClient.invalidateQueries({

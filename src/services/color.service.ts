@@ -2,7 +2,7 @@ import { axiosWithAuth } from '@/api/api.interceptors'
 
 import { API_URL } from '@/config/api-url'
 
-import { IColor, IColorInput } from '@/shared/types'
+import { IColor, TColorFormData } from '@/shared/types'
 
 class ColorService {
 	async getByStoreId(storeId: string) {
@@ -11,7 +11,7 @@ class ColorService {
 			method: 'GET'
 		})
 
-		return data || []
+		return data
 	}
 
 	async getById(colorId: string) {
@@ -23,7 +23,7 @@ class ColorService {
 		return data
 	}
 
-	async create(storeid: string, data: IColorInput) {
+	async create(storeid: string, data: TColorFormData) {
 		const { data: createdColor } = await axiosWithAuth<IColor>({
 			url: API_URL.COLOR.CREATE(storeid),
 			method: 'POST',
@@ -33,7 +33,7 @@ class ColorService {
 		return createdColor
 	}
 
-	async update(colorId: string, data: IColorInput) {
+	async update(colorId: string, data: TColorFormData) {
 		const { data: updateColor } = await axiosWithAuth<IColor>({
 			url: API_URL.COLOR.UPDATE(colorId),
 			method: 'PUT',

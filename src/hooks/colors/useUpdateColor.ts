@@ -1,12 +1,11 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useParams } from 'next/navigation'
-import { useRouter } from 'next/router'
+import { useParams, useRouter } from 'next/navigation'
 import { useMemo } from 'react'
 import toast from 'react-hot-toast'
 
 import { colorService } from '@/services/color.service'
 
-import { IColor } from '@/shared/types'
+import { TColorFormData } from '@/shared/types'
 
 export const useUpdateColor = () => {
 	const params = useParams<{ colorId: string }>()
@@ -16,7 +15,8 @@ export const useUpdateColor = () => {
 
 	const { mutate: updateColor, isPending: isLoadingUpdate } = useMutation({
 		mutationKey: ['update product'],
-		mutationFn: (data: IColor) => colorService.update(params.colorId, data),
+		mutationFn: (data: TColorFormData) =>
+			colorService.update(params.colorId, data),
 		onSuccess() {
 			queryClient.invalidateQueries({
 				queryKey: ['colors']

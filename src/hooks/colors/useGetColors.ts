@@ -4,13 +4,23 @@ import { useMemo } from 'react'
 
 import { colorService } from '@/services/color.service'
 
+import { IColor } from '@/shared/types'
+
 export const useGetColors = () => {
 	const params = useParams<{ storeId: string }>()
 
-	const { data: colors, isLoading } = useQuery({
+	const {
+		data: colors = [],
+		isLoading,
+		error
+	} = useQuery({
 		queryKey: ['colors'],
-		queryFn: () => colorService.getByStoreId(params.storeId)
+		queryFn: () => colorService.getByStoreId(params.storeId),
+		select: (data: IColor[]) => (Array.isArray(data) ? data : [])
 	})
 
-	return useMemo(() => ({ colors, isLoading }), [colors, isLoading])
+	return useMemo(
+		() => ({ colors, error, isLoading }),
+		[colors, error, isLoading]
+	)
 }

@@ -1,12 +1,13 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useParams } from 'next/navigation'
-import { useRouter } from 'next/router'
+import { useParams, useRouter } from 'next/navigation'
 import { useMemo } from 'react'
 import toast from 'react-hot-toast'
 
+import { ROUTES } from '@/config/routes'
+
 import { categoryService } from '@/services/category.service'
 
-import { ICategory } from '@/shared/types'
+import { TCategoryFormData } from '@/shared/types'
 
 export const useCreateCategory = () => {
 	const params = useParams<{ storeId: string }>()
@@ -14,16 +15,16 @@ export const useCreateCategory = () => {
 
 	const queryClient = useQueryClient()
 
-	const { mutate: createCategory, isPending: isLoadingCategory } = useMutation({
+	const { mutate: createCategory, isPending: isLoadingCreate } = useMutation({
 		mutationKey: ['create category'],
-		mutationFn: (data: ICategory) =>
+		mutationFn: (data: TCategoryFormData) =>
 			categoryService.create(params.storeId, data),
 		onSuccess() {
 			queryClient.invalidateQueries({
 				queryKey: ['categories']
 			})
 			toast.success('Категория добавлена')
-			/* router.push(ROUTES.PRODUCT.ID(params.storeId)) */
+			router.push(`${ROUTES.STORE.CATEGORIES(params.storeId)}`)
 		},
 		onError() {
 			toast.error('Ошибка при создании категории')
@@ -33,8 +34,8 @@ export const useCreateCategory = () => {
 	return useMemo(
 		() => ({
 			createCategory,
-			isLoadingCategory
+			isLoadingCreate
 		}),
-		[createCategory, isLoadingCategory]
+		[createCategory, isLoadingCreate]
 	)
 }

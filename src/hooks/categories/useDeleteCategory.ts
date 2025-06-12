@@ -1,8 +1,9 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useParams } from 'next/navigation'
-import { useRouter } from 'next/router'
+import { useParams, useRouter } from 'next/navigation'
 import { useMemo } from 'react'
 import toast from 'react-hot-toast'
+
+import { ROUTES } from '@/config/routes'
 
 import { categoryService } from '@/services/category.service'
 
@@ -20,10 +21,10 @@ export const useDeleteCategory = () => {
 				queryKey: ['categories']
 			})
 			toast.success('Категория удалена')
-			/* router.push(ROUTES.PRODUCT.ID(params.storeId)) */
+			router.push(`${ROUTES.STORE.CATEGORIES(params.storeId)}`)
 		},
 		onError() {
-			toast.error('Ошибка при создании категории')
+			toast.error('Ошибка при удалении категории')
 		}
 	})
 

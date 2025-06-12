@@ -1,5 +1,6 @@
 export * from './error-load-data'
 export * from './fields'
+export * from './loader'
 export * from './logo'
 export * from './portal'
 export * from './profile'
