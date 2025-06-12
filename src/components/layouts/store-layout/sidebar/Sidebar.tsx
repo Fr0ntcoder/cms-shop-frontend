@@ -1,6 +1,6 @@
 import cn from 'clsx'
 
-import { Logo } from '@/components/ui'
+import { Logo } from '@/components/ui/elements'
 
 import { Menu } from './menu'
 

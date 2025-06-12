@@ -2,7 +2,7 @@
 
 import cn from 'clsx'
 
-import { ErrorLoadData } from '@/components/ui'
+import { ErrorLoadData } from '@/components/ui/elements'
 
 import { useMiddleStatistics } from '@/hooks/statistics/useMiddleStatistics'
 

@@ -8,7 +8,8 @@ import {
 	XAxis
 } from 'recharts'
 
-import { ErrorLoadData, Title } from '@/components/ui'
+import { Title } from '@/components/ui/common'
+import { ErrorLoadData } from '@/components/ui/elements'
 
 import { IMonthlySales } from '@/shared/types'
 

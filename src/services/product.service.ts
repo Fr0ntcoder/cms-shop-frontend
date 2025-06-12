@@ -2,7 +2,7 @@ import { axiosClassic, axiosWithAuth } from '@/api/api.interceptors'
 
 import { API_URL } from '@/config/api-url'
 
-import { IProduct, IProductInput } from '@/shared/types'
+import { IProduct, TProductFormData } from '@/shared/types'
 
 class ProductService {
 	async getAll(searchTerm?: string | null) {
@@ -60,7 +60,7 @@ class ProductService {
 		return data
 	}
 
-	async create(data: IProductInput, storeid: string) {
+	async create(storeid: string, data: TProductFormData) {
 		const { data: createdProduct } = await axiosWithAuth<IProduct[]>({
 			url: API_URL.PRODUCT.CREATE(storeid),
 			method: 'POST',
@@ -70,7 +70,7 @@ class ProductService {
 		return createdProduct
 	}
 
-	async update(data: IProductInput, productId: string) {
+	async update(productId: string, data: TProductFormData) {
 		const { data: updateProduct } = await axiosWithAuth<IProduct[]>({
 			url: API_URL.PRODUCT.UPDATE(productId),
 			method: 'PUT',

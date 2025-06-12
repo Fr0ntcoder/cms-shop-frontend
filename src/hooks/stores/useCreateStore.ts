@@ -5,14 +5,14 @@ import toast from 'react-hot-toast'
 
 import { storeService } from '@/services/store.service'
 
-import { IStoreCreate } from '@/shared/types'
+import { TStoreCreateData } from '@/shared/types'
 
 export const useCreateStore = () => {
 	const router = useRouter()
 	const queryClient = useQueryClient()
 	const { mutate: createStore, isPending } = useMutation({
 		mutationKey: ['create store'],
-		mutationFn: (data: IStoreCreate) => storeService.create(data),
+		mutationFn: (data: TStoreCreateData) => storeService.create(data),
 		onSuccess(store) {
 			queryClient.invalidateQueries({
 				queryKey: ['profile']

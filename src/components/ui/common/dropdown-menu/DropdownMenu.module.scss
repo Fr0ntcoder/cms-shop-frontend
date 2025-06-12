@@ -1,0 +1,44 @@
+.root {
+	position: relative;
+}
+
+.trigger {
+	cursor: pointer;
+}
+.list {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	top: 100%;
+	right: 0;
+	border-radius: var(--rounded-lg);
+	box-shadow: 0 0 5px 0 rgb(var(--text-secondary));
+
+	&--sm {
+		width: 150px;
+	}
+
+	&--md {
+		width: 200px;
+	}
+
+	&--lg {
+		width: 250px;
+	}
+}
+
+.item {
+	display: flex;
+	align-items: center;
+	padding: 8px 10px;
+	transition: all 0.3s ease-in-out;
+
+	&:hover {
+		background: rgba(var(--primary), 0.1);
+	}
+
+	& > svg {
+		flex: none;
+		margin-right: 10px;
+	}
+}

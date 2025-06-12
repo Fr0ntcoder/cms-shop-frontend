@@ -1,10 +1,11 @@
 'use client'
 
-import { MainStatisticsList } from '@/components/features/store/statistics/main-statistics/main-statistics-list'
-import { MainStatisticsSkeleton } from '@/components/features/store/statistics/main-statistics/main-statistics-skeleton'
-import { ErrorLoadData } from '@/components/ui'
+import { ErrorLoadData } from '@/components/ui/elements'
 
 import { useMainStatistics } from '@/hooks/statistics/useMainStatistics'
+
+import { MainStatisticsList } from './main-statistics-list'
+import { MainStatisticsSkeleton } from './main-statistics-skeleton'
 
 interface Props {
 	className?: string
@@ -21,5 +22,5 @@ export function MainStatistics({ className }: Props) {
 		return <ErrorLoadData />
 	}
 
-	return <MainStatisticsList data={data} />
+	return <MainStatisticsList items={data} />
 }

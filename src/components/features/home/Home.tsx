@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { Dialog } from '@/components/ui'
+import { Dialog } from '@/components/ui/common'
 
 import styles from './Home.module.scss'
 

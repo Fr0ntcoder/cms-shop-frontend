@@ -1,6 +1,6 @@
 import cn from 'clsx'
 
-import { Title } from '@/components/ui'
+import { Title } from '@/components/ui/common'
 
 import { MainStatistics } from './main-statistics'
 import { MiddleStatistics } from './middle-statistics'

@@ -1,0 +1,19 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.title {
+	margin-bottom: 10px;
+}
+.description {
+	font-size: 18px;
+}
+
+.btn {
+	& svg {
+		margin-right: 5px;
+	}
+}

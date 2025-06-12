@@ -1,4 +1,6 @@
-import { ICategory, IColor, IReview, IStore } from '@/shared/types'
+import { z } from 'zod'
+
+import { ICategory, IColor, IReview } from '@/shared/types'
 
 export interface IProduct {
 	id: string
@@ -9,7 +11,7 @@ export interface IProduct {
 	category: ICategory
 	reviews: IReview[]
 	color: IColor
-	store: IStore
+	storeId: string
 }
 
 export interface IProductInput
@@ -17,3 +19,14 @@ export interface IProductInput
 	categoryId: string
 	colorId: string
 }
+
+export const productFormShemas = z.object({
+	title: z.string().min(1, { message: 'Это поле обязательно!' }),
+	description: z.string().min(1, { message: 'Это поле обязательно!' }),
+	images: z.array(z.string()),
+	price: z.coerce.number(),
+	categoryId: z.string().min(1, { message: 'Это поле обязательно!' }),
+	colorId: z.string().min(1, { message: 'Это поле обязательно!' })
+})
+
+export type TProductFormData = z.infer<typeof productFormShemas>

@@ -1,4 +1,4 @@
-import { axiosClassic, axiosWithAuth } from '@/api/api.interceptors'
+import { axiosWithAuth } from '@/api/api.interceptors'
 
 import { API_URL } from '@/config/api-url'
 
@@ -6,7 +6,7 @@ import { ICategory, ICategoryInput } from '@/shared/types'
 
 class CategoryService {
 	async getByStoreId(storeId: string) {
-		const { data } = await axiosClassic<ICategory>({
+		const { data } = await axiosWithAuth<ICategory[]>({
 			url: API_URL.CATEGORY.STORE(storeId),
 			method: 'GET'
 		})
@@ -15,7 +15,7 @@ class CategoryService {
 	}
 
 	async getById(categoryId: string) {
-		const { data } = await axiosClassic<ICategory>({
+		const { data } = await axiosWithAuth<ICategory>({
 			url: API_URL.CATEGORY.ID(categoryId),
 			method: 'GET'
 		})
@@ -23,7 +23,7 @@ class CategoryService {
 		return data
 	}
 
-	async create(data: ICategoryInput, storeid: string) {
+	async create(storeid: string, data: ICategoryInput) {
 		const { data: createdCategory } = await axiosWithAuth<ICategory>({
 			url: API_URL.CATEGORY.CREATE(storeid),
 			method: 'POST',
@@ -33,7 +33,7 @@ class CategoryService {
 		return createdCategory
 	}
 
-	async update(data: ICategoryInput, categoryId: string) {
+	async update(categoryId: string, data: ICategoryInput) {
 		const { data: updateCategory } = await axiosWithAuth<ICategory>({
 			url: API_URL.CATEGORY.UPDATE(categoryId),
 			method: 'PUT',

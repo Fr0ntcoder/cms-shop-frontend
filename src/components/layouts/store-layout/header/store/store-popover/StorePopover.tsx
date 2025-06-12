@@ -1,7 +1,8 @@
 import { ChevronsUpDown, Plus, StoreIcon } from 'lucide-react'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
-import { Popover } from '@/components/ui'
+import { Popover } from '@/components/ui/common'
 
 import { ROUTES } from '@/config/routes'
 
@@ -19,22 +20,25 @@ interface Props {
 
 export function StorePopover({ onClick, stores, className }: Props) {
 	const { isOpen, onOpen, onClose, onToogle } = useToggle()
+	const params = useParams<{ storeId: string }>()
 
 	const list = stores?.map(item => (
 		<li key={item.id} className={styles.item}>
-			<Link href={ROUTES.STORE.ID(item.id)} className={styles.link}>
+			<Link href={ROUTES.STORE.STATISTICS(item.id)} className={styles.link}>
 				<StoreIcon />
 				<span>{item.title}</span>
 			</Link>
 		</li>
 	))
 
+	const currentStore = stores.find(item => item.id === params.storeId)?.title
+
 	return (
 		<Popover
 			trigger={
 				<div className={styles.trigger}>
 					<StoreIcon />
-					Текущий магазин
+					{currentStore}
 					<ChevronsUpDown />
 				</div>
 			}

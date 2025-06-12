@@ -30,6 +30,7 @@ axiosWithAuth.interceptors.request.use(config => {
 	return config
 })
 
+
 axiosWithAuth.interceptors.response.use(
 	config => config,
 	async error => {

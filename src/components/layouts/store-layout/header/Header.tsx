@@ -2,7 +2,7 @@
 
 import cn from 'clsx'
 
-import { ProfileUser } from '@/components/common/profile'
+import { ProfileUser } from '@/components/ui/elements'
 
 import { useProfile } from '@/hooks/profile/useProfile'
 

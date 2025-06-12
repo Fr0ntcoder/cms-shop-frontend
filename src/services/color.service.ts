@@ -23,7 +23,7 @@ class ColorService {
 		return data
 	}
 
-	async create(data: IColorInput, storeid: string) {
+	async create(storeid: string, data: IColorInput) {
 		const { data: createdColor } = await axiosWithAuth<IColor>({
 			url: API_URL.COLOR.CREATE(storeid),
 			method: 'POST',
@@ -33,7 +33,7 @@ class ColorService {
 		return createdColor
 	}
 
-	async update(data: IColorInput, colorId: string) {
+	async update(colorId: string, data: IColorInput) {
 		const { data: updateColor } = await axiosWithAuth<IColor>({
 			url: API_URL.COLOR.UPDATE(colorId),
 			method: 'PUT',

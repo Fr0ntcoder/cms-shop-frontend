@@ -3,8 +3,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 
-import { FieldInput } from '@/components/common/fields'
-import { Button, Title } from '@/components/ui'
+import { Button, Title } from '@/components/ui/common'
+import { FieldInput } from '@/components/ui/elements'
 
 import { useCreateStore } from '@/hooks/stores/useCreateStore'
 
@@ -41,7 +41,7 @@ export function StoreCreateForm({ onClose, className }: Props) {
 					required
 					className={styles.input}
 				/>
-				<Button type='submit' variant='default'>
+				<Button type='submit' variant='primary'>
 					Добавить
 				</Button>
 			</form>

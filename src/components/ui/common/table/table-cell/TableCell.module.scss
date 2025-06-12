@@ -1,0 +1,9 @@
+.root {
+	font-size: 16px;
+	padding: 16px;
+	vertical-align: middle;
+	color: rgb(var(--text-secondary));
+	&[role='checkbox'] {
+		padding-right: 0;
+	}
+}

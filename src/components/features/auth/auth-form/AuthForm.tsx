@@ -4,8 +4,8 @@ import cn from 'clsx'
 import { useState } from 'react'
 import { FormProvider } from 'react-hook-form'
 
-import { FieldInput } from '@/components/common/fields'
-import { Button, Title } from '@/components/ui'
+import { Button, Title } from '@/components/ui/common'
+import { FieldInput } from '@/components/ui/elements'
 
 import { useAuthForm } from '@/hooks/auth/useAuthForm'
 

@@ -1,7 +1,8 @@
 import cn from 'clsx'
 import Image from 'next/image'
 
-import { ErrorLoadData, Title } from '@/components/ui'
+import { Title } from '@/components/ui/common'
+import { ErrorLoadData } from '@/components/ui/elements'
 
 import { ILastUsers } from '@/shared/types'
 

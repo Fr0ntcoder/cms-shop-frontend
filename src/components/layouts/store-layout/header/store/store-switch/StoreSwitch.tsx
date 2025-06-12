@@ -4,7 +4,7 @@ import cn from 'clsx'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-import { Modal } from '@/components/ui'
+import { Modal } from '@/components/ui/common'
 
 import { useToggle } from '@/hooks/useToggle'
 

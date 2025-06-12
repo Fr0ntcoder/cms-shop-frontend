@@ -5,8 +5,8 @@ import cn from 'clsx'
 import { TrashIcon } from 'lucide-react'
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
 
-import { FieldInput, FieldTextarea } from '@/components/common/fields'
-import { Button, Dialog, Title } from '@/components/ui'
+import { Button, Dialog, Title } from '@/components/ui/common'
+import { FieldInput, FieldTextarea } from '@/components/ui/elements'
 
 import { useDeleteStore } from '@/hooks/stores/useDeleteStore'
 import { useStore } from '@/hooks/stores/useStore'
