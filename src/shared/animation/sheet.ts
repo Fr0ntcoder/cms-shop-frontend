@@ -1,6 +1,6 @@
 export const sheetOverlayAnimate = {
 	initial: { opacity: 0 },
-	animate: { opacity: 0.5 },
+	animate: { opacity: 0.8 },
 	exit: { opacity: 0 }
 }
 

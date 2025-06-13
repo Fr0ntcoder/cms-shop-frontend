@@ -5,12 +5,12 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 import { Modal } from '@/components/ui/common'
+import { StoreCreateForm } from '@/components/ui/elements'
 
 import { useToggle } from '@/hooks/useToggle'
 
 import { IStore } from '@/shared/types'
 
-import { StoreCreateForm } from '../store-create-form'
 import { StorePopover } from '../store-popover'
 
 import styles from './StoreSwitch.module.scss'

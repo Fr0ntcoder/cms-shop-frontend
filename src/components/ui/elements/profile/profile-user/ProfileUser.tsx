@@ -2,6 +2,8 @@ import { LoaderCircle } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { Button } from '@/components/ui/common'
+
 import { ROUTES } from '@/config/routes'
 
 import { IUser } from '@/shared/types'
@@ -14,11 +16,19 @@ interface Props {
 }
 
 export function ProfileUser({ data, isLoading }: Props) {
-	if (isLoading || !data) {
+	if (isLoading) {
 		return (
 			<div className={styles.skeleton}>
 				<LoaderCircle className={styles.loader} width={40} height={40} />
 			</div>
+		)
+	}
+
+	if (!data) {
+		return (
+			<Link href={ROUTES.AUTH.INDEX}>
+				<Button variant='primary'>Войти</Button>
+			</Link>
 		)
 	}
 

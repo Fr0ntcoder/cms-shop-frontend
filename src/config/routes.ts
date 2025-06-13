@@ -8,7 +8,7 @@ const BASE_FILES = '/file'
 
 export const ROUTES = {
 	HOME: '/',
-	EXPLORER: '/explorer',
+	EXPLORER: (query = '') => `/explorer${query}`,
 	HERO: '/hero',
 	THANKS: '/thanks',
 	DASHBOARD: {
@@ -23,6 +23,7 @@ export const ROUTES = {
 		LOGOUT: `${BASE_AUTH}/logout`
 	},
 	STORE: {
+		HOME: (storeId = '') => `${BASE_STORE}/${storeId}`,
 		CATEGORIES: (storeId = '') => `${BASE_STORE}/${storeId}/categories`,
 		CATEGORIES_EDIT: (storeId = '', categoryId = '') =>
 			`${BASE_STORE}/${storeId}/categories/${categoryId}`,

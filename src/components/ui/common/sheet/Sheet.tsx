@@ -1,8 +1,9 @@
 import cn from 'clsx'
 import { AnimatePresence, motion } from 'motion/react'
 import { ReactNode } from 'react'
+import { createPortal } from 'react-dom'
 
-import { Portal } from '@/components/ui/elements/portal'
+import { useClickOutside } from '@/hooks/useClickOutside'
 
 import { sheetAnimate, sheetOverlayAnimate } from '@/shared/animation/sheet'
 
@@ -23,15 +24,20 @@ export function Sheet({
 	size = 'sm',
 	className
 }: Props) {
-	return (
+	const ref = useClickOutside<HTMLDivElement>(onClose)
+
+	if (typeof window === 'undefined' || typeof document === 'undefined')
+		return null
+	return createPortal(
 		<AnimatePresence>
 			{isOpen && (
-				<Portal>
+				<motion.div className={styles.root}>
 					<motion.div
 						className={styles.overlay}
 						{...sheetOverlayAnimate}
 					></motion.div>
 					<motion.div
+						ref={ref}
 						className={cn(
 							styles.content,
 							styles[`content--${size}`],
@@ -41,8 +47,9 @@ export function Sheet({
 					>
 						{children}
 					</motion.div>
-				</Portal>
+				</motion.div>
 			)}
-		</AnimatePresence>
+		</AnimatePresence>,
+		document.body
 	)
 }
