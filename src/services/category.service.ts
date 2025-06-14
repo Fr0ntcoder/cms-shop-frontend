@@ -1,4 +1,4 @@
-import { axiosWithAuth } from '@/api/api.interceptors'
+import { axiosClassic, axiosWithAuth } from '@/api/api.interceptors'
 
 import { API_URL } from '@/config/api-url'
 
@@ -15,7 +15,7 @@ class CategoryService {
 	}
 
 	async getById(categoryId: string) {
-		const { data } = await axiosWithAuth<ICategory>({
+		const { data } = await axiosClassic<ICategory>({
 			url: API_URL.CATEGORY.ID(categoryId),
 			method: 'GET'
 		})

@@ -1,29 +1,14 @@
 'use client'
 
-import { useState } from 'react'
-
-import { Dialog } from '@/components/ui/common'
+import { IProduct } from '@/shared/types'
 
 import styles from './Home.module.scss'
 
 interface Props {
+	products: IProduct[]
 	className?: string
 }
 
-export function Home({ className }: Props) {
-	const [isOpen, setIsOpen] = useState(false)
-	const handler = () => {}
-	return (
-		<div className={styles.wrap}>
-			<button onClick={() => setIsOpen(true)}>Открыть</button>
-			<Dialog
-				isOpen={isOpen}
-				onClose={() => setIsOpen(false)}
-				onConfirm={handler}
-				className={styles.modal}
-			>
-				Привет!
-			</Dialog>
-		</div>
-	)
+export function Home({ className, products }: Props) {
+	return <div className={styles.wrap}></div>
 }

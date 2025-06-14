@@ -7,5 +7,5 @@ interface Props {
 }
 
 export function Footer({ className }: Props) {
-	return <div className={cn(styles.root, className)}>Footer</div>
+	return <div className={cn(styles.root, className)}></div>
 }
