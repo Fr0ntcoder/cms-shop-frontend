@@ -12,7 +12,7 @@ class ProductService {
 			params: searchTerm ? { searchTerm } : {}
 		})
 
-		return data || null
+		return data || []
 	}
 
 	async getByStoreId(storeId: string) {

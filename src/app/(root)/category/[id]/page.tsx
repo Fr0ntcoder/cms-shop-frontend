@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { Catalog } from '@/components/ui/elements/catalog'
+import { Category } from '@/components/features/category'
 
 import { categoryService } from '@/services/category.service'
 import { productService } from '@/services/product.service'
@@ -43,13 +43,5 @@ export default async function CategoryPage({
 	params: { id: string }
 }) {
 	const { category, products } = await getProducts(params)
-	return (
-		<Catalog
-			products={products}
-			title={category.title}
-			description={category.description}
-			linkTitle=''
-			link=''
-		/>
-	)
+	return <Category products={products} category={category} />
 }

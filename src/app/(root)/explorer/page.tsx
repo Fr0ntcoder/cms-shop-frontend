@@ -1,8 +1,6 @@
 import { Metadata } from 'next'
 
-import { Catalog } from '@/components/ui/elements/catalog'
-
-import { ROUTES } from '@/config/routes'
+import { Explorer } from '@/components/features/explorer'
 
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 
@@ -16,20 +14,12 @@ export const metadata: Metadata = {
 export const revalidate = 60
 
 async function getProducts() {
-	const data = (await productService.getMostPopular()).slice(0, 6)
+	const data = await productService.getAll()
 
 	return data
 }
 
 export default async function ExplorerPage() {
 	const data = await getProducts()
-	return (
-		<Catalog
-			products={data}
-			title='Хит продаж'
-			description='Самые популярные товары'
-			linkTitle='Узнать больше'
-			link={ROUTES.EXPLORER()}
-		/>
-	)
+	return <Explorer products={data} />
 }
