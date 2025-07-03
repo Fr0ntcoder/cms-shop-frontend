@@ -21,7 +21,7 @@ export const useDeleteProduct = () => {
 				queryKey: ['products']
 			})
 			toast.success('Товар удален')
-			router.push(ROUTES.PRODUCT.ID(params.storeId))
+			router.push(ROUTES.STORE.PRODUCTS(params.storeId))
 		},
 		onError() {
 			toast.error('Ошибка при создании товара')

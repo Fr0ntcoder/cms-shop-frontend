@@ -20,16 +20,20 @@ interface Props {
 export function ProductCard({ className, product }: Props) {
 	return (
 		<div className={cn(styles.root, className)}>
-			<div className={styles.image}>
-				<Image
-					src={product.images[0]}
-					fill
-					alt={product.title}
-					objectFit='cover'
-					objectPosition='bottom'
-				/>
-			</div>
-			<Title className={styles.title}>{product.title}</Title>
+			<Link href={ROUTES.PRODUCT.ID(product.id)} className={styles.link}>
+				<span className={styles.image}>
+					<span className={styles.image__inner}>
+						<Image
+							src={product.images[0]}
+							fill
+							alt={product.title}
+							objectFit='cover'
+							objectPosition='top center'
+						/>
+					</span>
+				</span>
+				<Title className={styles.title}>{product.title}</Title>
+			</Link>
 			<Link
 				href={ROUTES.CATEGORY.ID(product.category.id)}
 				className={styles.category}

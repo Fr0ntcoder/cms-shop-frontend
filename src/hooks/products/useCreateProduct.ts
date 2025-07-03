@@ -3,6 +3,8 @@ import { useParams, useRouter } from 'next/navigation'
 import { useMemo } from 'react'
 import toast from 'react-hot-toast'
 
+import { ROUTES } from '@/config/routes'
+
 import { productService } from '@/services/product.service'
 
 import { TProductFormData } from '@/shared/types'
@@ -22,7 +24,7 @@ export const useCreateProduct = () => {
 				queryKey: ['products']
 			})
 			toast.success('Товар создан')
-			/* router.push(ROUTES.PRODUCT.ID(params.storeId)) */
+			router.push(ROUTES.STORE.PRODUCTS(params.storeId))
 		},
 		onError() {
 			toast.error('Ошибка при создании товара')
