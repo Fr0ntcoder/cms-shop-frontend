@@ -1,0 +1,21 @@
+.btn {
+	display: flex;
+	align-items: center;
+	padding: 15px;
+	cursor: pointer;
+	& svg {
+		margin-left: 10px;
+	}
+}
+
+.color {
+	display: flex;
+	align-items: center;
+	&__value {
+		display: block;
+		width: 20px;
+		height: 20px;
+		margin-left: 10px;
+		border-radius: 50%;
+	}
+}

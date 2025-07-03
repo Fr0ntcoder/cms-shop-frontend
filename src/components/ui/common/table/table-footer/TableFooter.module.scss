@@ -1,0 +1,9 @@
+.root {
+	font-weight: 500;
+	background: rgb(var(--primary));
+	border-top-width: 1px;
+
+	& > tr:last-child {
+		border-bottom-width: 0;
+	}
+}

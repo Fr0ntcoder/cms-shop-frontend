@@ -1,0 +1,23 @@
+.root {
+	display: flex;
+	width: 100%;
+	height: 150px;
+	flex-direction: column;
+	padding: 15px;
+	border: 1px solid rgb(var(--primary));
+	border-radius: var(--rounded-lg);
+}
+
+.header {
+	display: flex;
+	font-size: 22px;
+	font-weight: bold;
+	justify-content: space-between;
+	color: rgb(var(--text-primary));
+}
+
+.content {
+	font-size: 25px;
+	margin-top: auto;
+	color: rgb(var(--primary));
+}

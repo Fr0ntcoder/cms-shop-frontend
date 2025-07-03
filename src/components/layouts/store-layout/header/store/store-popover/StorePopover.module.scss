@@ -1,0 +1,51 @@
+.root {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	gap: 10px;
+	padding: 0 12px;
+	background: #fff;
+}
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.item {
+	display: block;
+}
+
+.link {
+	display: flex;
+	align-items: center;
+	transition: all 0.3s ease-in-out;
+	cursor: pointer;
+	&:hover {
+		opacity: 0.5;
+	}
+
+	& > svg {
+		margin-right: 10px;
+	}
+
+	& span {
+		display: inline-block;
+	}
+}
+
+.create {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+
+	& > svg {
+		margin-right: 10px;
+	}
+}
+
+.trigger {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}

@@ -1,0 +1,13 @@
+.root {
+	display: grid;
+	grid-template-columns: 1fr 450px;
+	gap: 30px;
+}
+
+.left {
+	height: 400px;
+}
+
+.right {
+	height: 200px;
+}

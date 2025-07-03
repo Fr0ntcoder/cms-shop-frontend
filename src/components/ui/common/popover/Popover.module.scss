@@ -1,0 +1,17 @@
+.root {
+	position: relative;
+}
+
+.content {
+	position: absolute;
+	width: 100%;
+	display: flex;
+	top: calc(100% + 10px);
+	left: 0;
+	z-index: 10;
+}
+
+.trigger {
+	padding: 8px 12px;
+	background: #fff;
+}

@@ -1,0 +1,19 @@
+.root {
+	padding: 50px 15px 0 15px;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+.description {
+	max-width: 1000px;
+	width: 100%;
+}
+.list {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 30px;
+}
